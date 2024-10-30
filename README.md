@@ -51,7 +51,7 @@ The **GitHub Follow Checker** is a simple Bash script that allows users to check
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the [MIT license](https://opensource.org/licenses/MIT). See the LICENSE file for more details.
 
 ## Author
 
