@@ -34,3 +34,7 @@ echo "Fetching the list of users you follow..."
 following=$(curl -s -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
   "https://api.github.com/users/$GITHUB_USERNAME/following" | jq -r '.[].login')
 
+# Fetch the list of users who follow you
+echo "Fetching the list of users who follow you..."
+followers=$(curl -s -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
+  "https://api.github.com/users/$GITHUB_USERNAME/followers" | jq -r '.[].login')
