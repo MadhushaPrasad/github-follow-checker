@@ -28,3 +28,9 @@ get_credentials() {
 
 # Read credentials
 read_credentials
+
+# Fetch the list of users you are following
+echo "Fetching the list of users you follow..."
+following=$(curl -s -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
+  "https://api.github.com/users/$GITHUB_USERNAME/following" | jq -r '.[].login')
+
