@@ -15,3 +15,13 @@ read_credentials() {
         get_credentials
     fi
 }
+
+# Function to get credentials from the user
+get_credentials() {
+    read -p "Enter your GitHub username: " GITHUB_USERNAME
+    read -sp "Enter your personal access token: " GITHUB_TOKEN
+    echo
+    # Save the credentials to github.txt
+    echo "$GITHUB_USERNAME $GITHUB_TOKEN" > github.txt
+    echo "Credentials saved to github.txt."
+}
