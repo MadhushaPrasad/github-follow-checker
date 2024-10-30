@@ -38,3 +38,24 @@ following=$(curl -s -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
 echo "Fetching the list of users who follow you..."
 followers=$(curl -s -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
   "https://api.github.com/users/$GITHUB_USERNAME/followers" | jq -r '.[].login')
+
+# Initialize an empty string to hold users who do not follow back
+unreciprocated=""
+
+# Check each user you follow
+for user in $following; do
+  # If the user is not in the followers list, add to unreciprocated
+  if ! echo "$followers" | grep -q "^$user$"; then
+    unreciprocated+="$user\n"
+  fi
+done
+
+# Output the results
+if [ -z "$unreciprocated" ]; then
+  echo "Great! All the users you follow are following you back!"
+else
+  echo "Here are the users you follow who do not follow you back:"
+  echo -e "$unreciprocated" | while read -r user; do
+    echo " - $user"
+  done
+fi
